@@ -1,0 +1,17 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: opspulse-backend-monitor
+  labels:
+    release: prometheus
+    app: opspulse-backend
+spec:
+  selector:
+    matchLabels:
+      app: opspulse-backend
+  endpoints:
+    - port: http
+      path: {{ .Values.serviceMonitor.path }}
+      interval: {{ .Values.serviceMonitor.interval }}
+{{- end }}

@@ -1,0 +1,12 @@
+backend:
+  replicaCount: 3
+frontend:
+  replicaCount: 3
+hpa:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 70
+ingress:
+  enabled: true
+  host: opspulse.prod.company.internal

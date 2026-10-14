@@ -1,0 +1,14 @@
+apiVersion: v2
+name: opspulse
+description: Enterprise DevOps Incident & Service Reliability Management Helm Chart
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - incident-management
+  - devops
+  - sre
+  - kubernetes
+maintainers:
+  - name: Sathwik Perla
+    email: perla.24bcs10590@sst.scaler.com
