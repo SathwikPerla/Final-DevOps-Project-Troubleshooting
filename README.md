@@ -7,6 +7,18 @@
 **Email:** perla.24bcs10590@sst.scaler.com  
 **Course:** DevOps Engineering Capstone  
 
+---
+
+## Project Demonstration & Video Walkthrough
+
+> [!IMPORTANT]
+> **Video Demonstration Link:**  
+> [Watch Full Project Walkthrough on Google Drive](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
+
+[![OpsPulse Project Video Walkthrough](screenshots/03-browser-app-running.png)](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
+
+*Click on the preview thumbnail above or the text link to stream the full video demonstration (Application UI, Pytest Suite, Docker Compose, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD).*
+
 
 ---
 
