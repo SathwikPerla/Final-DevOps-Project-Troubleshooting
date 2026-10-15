@@ -129,17 +129,17 @@ jobs:
             helm upgrade --install opspulse ./helm/opspulse \
               --namespace opspulse \
               --create-namespace \
-              --set backend.tag=${{ github.sha }} \
-              --set frontend.tag=${{ github.sha }} \
-              --set backend.image=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
-              --set frontend.image=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend
+              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
+              --set backend.image.tag=${{ github.sha }} \
+              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend \
+              --set frontend.image.tag=${{ github.sha }}
           else
             echo "No live cluster secret detected. Validating Helm chart syntax and synthesis..."
             helm lint ./helm/opspulse
             helm template opspulse ./helm/opspulse \
-              --set backend.tag=${{ github.sha }} \
-              --set frontend.tag=${{ github.sha }} \
-              --set backend.image=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
-              --set frontend.image=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend
+              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
+              --set backend.image.tag=${{ github.sha }} \
+              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend \
+              --set frontend.image.tag=${{ github.sha }}
             echo "Helm templates validated successfully!"
           fi
