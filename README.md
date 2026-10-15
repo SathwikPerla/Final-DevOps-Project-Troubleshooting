@@ -6,7 +6,7 @@
 **Roll Number:** 590  
 **Email:** perla.24bcs10590@sst.scaler.com  
 **Course:** DevOps Engineering Capstone  
-**Target Score:** 100 / 100 Points  
+
 
 ---
 
