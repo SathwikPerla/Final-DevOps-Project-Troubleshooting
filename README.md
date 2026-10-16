@@ -9,15 +9,15 @@
 
 ---
 
-## Project Demonstration & Video Walkthrough
+## Project Demonstration & Presentation
 
-> [!IMPORTANT]
-> **Video Demonstration Link:**  
-> [Watch Full Project Walkthrough on Google Drive](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
+> [!NOTE]
+> **Project Walkthrough & Presentation Materials:**  
+> The comprehensive slide deck is available at [SevZero_Presentation.pptx](demo/SevZero_Presentation.pptx) and interactive web deck at [index.html](demo/index.html). The complete video demonstration walkthrough is archived in the [demo/](demo/) directory.
 
-[![SevZero Project Video Walkthrough](screenshots/03-browser-app-running.png)](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
+[![SevZero Project Walkthrough](screenshots/03-browser-app-running.png)](demo/)
 
-*Click on the preview thumbnail above or the text link to stream the full video demonstration (Application UI, Pytest Suite, Docker Compose, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD).*
+*Preview of the SevZero Web Application UI, Pytest Test Suite, Docker Compose Stack, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD.*
 
 
 ---
