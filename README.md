@@ -15,7 +15,7 @@
 > **Video Walkthrough & Presentation Deliverables:**  
 > - 🎬 **Video Demonstration Link:** [Watch Full Project Walkthrough on Google Drive](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)  
 > - 📊 **Executive Slide Deck:** [SevZero_Presentation.pptx](demo/SevZero_Presentation.pptx)  
-> - 🌐 **Interactive Web Deck:** [index.html](demo/index.html)  
+> - 🌐 **Interactive Web Deck:** [Launch Live Presentation](https://sathwikperla.github.io/Final-DevOps-Project-Troubleshooting/demo/)  
 > - 📁 **Demo Documentation:** [demo/README.md](demo/README.md)  
 
 [![SevZero Project Video Walkthrough](screenshots/03-browser-app-running.png)](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)

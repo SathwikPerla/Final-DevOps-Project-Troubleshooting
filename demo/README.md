@@ -22,5 +22,5 @@ The comprehensive end-to-end video walkthrough showcases the complete DevOps lif
 
 - **PowerPoint Presentation Deck:** [`SevZero_Presentation.pptx`](SevZero_Presentation.pptx)  
   *Executive summary, architecture diagrams, testing matrix, Kubernetes specifications, and CI/CD workflow.*
-- **Interactive Web Presentation:** [`index.html`](index.html)  
+- **Interactive Web Presentation:** [Launch Live Slide Deck Online](https://sathwikperla.github.io/Final-DevOps-Project-Troubleshooting/demo/) (or double-click [`index.html`](index.html) to open locally in any browser)  
   *Self-contained browser-based presentation for quick offline or browser review.*
