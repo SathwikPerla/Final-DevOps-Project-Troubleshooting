@@ -16,7 +16,7 @@
 > - 🎬 **Video Demonstration Link:** [Watch Full Project Walkthrough on Google Drive](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)  
 > - 📊 **Executive Slide Deck:** [SevZero_Presentation.pptx](demo/SevZero_Presentation.pptx)  
 > - 🌐 **Interactive Web Deck:** [index.html](demo/index.html)  
-> - 📁 **Local Video Archive:** Archived in the [demo/](demo/) directory  
+> - 📁 **Local Video Archive:** Stream directly on GitHub at [demo/SevZero_Demo_Walkthrough.mp4](demo/SevZero_Demo_Walkthrough.mp4)  
 
 [![SevZero Project Video Walkthrough](screenshots/03-browser-app-running.png)](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)
 
