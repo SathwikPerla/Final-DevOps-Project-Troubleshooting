@@ -11,13 +11,16 @@
 
 ## Project Demonstration & Presentation
 
-> [!NOTE]
-> **Project Walkthrough & Presentation Materials:**  
-> The comprehensive slide deck is available at [SevZero_Presentation.pptx](demo/SevZero_Presentation.pptx) and interactive web deck at [index.html](demo/index.html). The complete video demonstration walkthrough is archived in the [demo/](demo/) directory.
+> [!IMPORTANT]
+> **Video Walkthrough & Presentation Deliverables:**  
+> - 🎬 **Video Demonstration Link:** [Watch Full Project Walkthrough on Google Drive](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)  
+> - 📊 **Executive Slide Deck:** [SevZero_Presentation.pptx](demo/SevZero_Presentation.pptx)  
+> - 🌐 **Interactive Web Deck:** [index.html](demo/index.html)  
+> - 📁 **Local Video Archive:** Archived in the [demo/](demo/) directory  
 
-[![SevZero Project Walkthrough](screenshots/03-browser-app-running.png)](demo/)
+[![SevZero Project Video Walkthrough](screenshots/03-browser-app-running.png)](https://drive.google.com/file/d/1Hxwd7V80vhhwKIDdqmp_JRDquYRCOpcb/view?usp=drive_link)
 
-*Preview of the SevZero Web Application UI, Pytest Test Suite, Docker Compose Stack, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD.*
+*Click on the preview thumbnail above or the text link to stream the full video demonstration (Application UI, Pytest Suite, Docker Compose, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD).*
 
 
 ---
