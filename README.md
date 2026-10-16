@@ -159,7 +159,7 @@ Devops Capstone Project/
 ├── scripts/
 │   ├── load-test.sh              # Concurrent traffic generator
 │   └── run_and_screenshot.py     # Headless terminal screenshot engine
-├── screenshots/                  # 20 High-resolution visual artifacts
+├── screenshots/                  # 23 High-resolution visual artifacts
 ├── .gitignore                    # Excludes .env, __pycache__, node_modules, .venv, tfstate
 └── README.md
 ```
@@ -292,6 +292,15 @@ The `.github/workflows/ci-cd.yml` workflow orchestrates a 3-stage automated deli
    - Initializes Helm 3 and configures `kubectl` via repository secrets.
    - Executes atomic upgrade: `helm upgrade --install opspulse ./helm/opspulse --set backend.tag=${{ github.sha }} ...`.
 
+### Pipeline Execution & GHCR Package Verification
+The pipeline executes automatically on push to `main`, validating code quality, building artifacts, and pushing versioned images:
+
+![GitHub Actions Pipeline Runs](screenshots/21-github-actions-pipeline.png)
+
+All three workflow jobs pass synchronously, publishing immutable container packages (`opspulse-backend` and `opspulse-frontend`) to GitHub Container Registry:
+
+![GitHub Actions Checks and GHCR Packages](screenshots/22-ghcr-packages-and-checks.png)
+
 ---
 
 ## Module 6: DevSecOps (Trivy Security Scanning)
@@ -413,9 +422,13 @@ curl -s http://localhost:8000/metrics | grep -E '^(http_requests|process_cpu)' |
 ```
 ![Prometheus Metrics Endpoint](screenshots/16-prometheus-metrics.png)
 
-### 2. Monitoring Configuration
+### 2. Monitoring Configuration & Prometheus Targets
 - `monitoring/prometheus-values.yaml`: Configures `kube-prometheus-stack` with Grafana enabled, automatic namespace discovery, and 15s scrape intervals.
 - `helm/opspulse/templates/servicemonitor.yaml`: Registers the `/metrics` endpoint with Prometheus Operator.
+
+The Prometheus Operator automatically discovers the FastAPI endpoints via the ServiceMonitor, maintaining continuous scrape health:
+
+![Prometheus Targets Status](screenshots/23-prometheus-targets.png)
 
 ### 3. Grafana Live Telemetry & Golden Signals Dashboard
 A dedicated SRE telemetry dashboard monitoring OpsPulse's four golden signals (Latency, Traffic, Errors, and Saturation) alongside database incident metrics:
@@ -528,10 +541,10 @@ Docker (M4 - 10 pts)
 
 CI/CD (M5 - 15 pts)
   [x] .github/workflows/ci-cd.yml present and valid
-  [x] Pipeline runs on push to main
+  [x] Pipeline runs on push to main (screenshot 21)
   [x] Pytest runs and gates build
   [x] Frontend built in pipeline
-  [x] Images tagged with git commit SHA and pushed to GHCR
+  [x] Images tagged with git commit SHA and pushed to GHCR (screenshot 22)
 
 DevSecOps (M6 - 5 pts)
   [x] Trivy container security scans for both backend and frontend images (screenshots 04, 05)
@@ -557,6 +570,7 @@ Kubernetes + Helm (M8 - 15 pts)
 
 Observability (M9 - 10 pts)
   [x] /metrics endpoint returns Prometheus formatted metrics (screenshot 16)
+  [x] Prometheus targets status verified UP (screenshot 23)
   [x] Prometheus and Grafana values configured in monitoring/
   [x] ServiceMonitor template configured for cluster scraping
   [x] Live Grafana SRE Golden Signals monitoring dashboard rendered (screenshot 20)
