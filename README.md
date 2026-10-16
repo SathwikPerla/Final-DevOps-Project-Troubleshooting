@@ -133,7 +133,7 @@ Devops Capstone Project/
 │   ├── terraform.tfvars.example
 │   └── README.md
 ├── helm/
-│   └── opspulse/                 # Kubernetes package
+│   └── sevzero/                 # Kubernetes package
 │       ├── Chart.yaml
 │       ├── values.yaml           # Default values (2 backend + 2 frontend replicas)
 │       ├── values-dev.yaml
@@ -149,7 +149,7 @@ Devops Capstone Project/
 │           ├── hpa.yaml          # HorizontalPodAutoscaler (CPU 75%)
 │           └── servicemonitor.yaml
 ├── k8s/
-│   └── namespace.yaml            # Isolated 'opspulse' namespace
+│   └── namespace.yaml            # Isolated 'sevzero' namespace
 ├── monitoring/
 │   └── prometheus-values.yaml    # Prometheus Operator & Grafana values
 ├── troubleshooting/              # Fault simulation exercises
@@ -290,14 +290,14 @@ The `.github/workflows/ci-cd.yml` workflow orchestrates a 3-stage automated deli
 3. **Deploy Stage**:
    - Triggers only on push to `main`.
    - Initializes Helm 3 and configures `kubectl` via repository secrets.
-   - Executes atomic upgrade: `helm upgrade --install opspulse ./helm/opspulse --set backend.tag=${{ github.sha }} ...`.
+   - Executes atomic upgrade: `helm upgrade --install sevzero ./helm/sevzero --set backend.tag=${{ github.sha }} ...`.
 
 ### Pipeline Execution & GHCR Package Verification
 The pipeline executes automatically on push to `main`, validating code quality, building artifacts, and pushing versioned images:
 
 ![GitHub Actions Pipeline Runs](screenshots/21-github-actions-pipeline.png)
 
-All three workflow jobs pass synchronously, publishing immutable container packages (`opspulse-backend` and `opspulse-frontend`) to GitHub Container Registry:
+All three workflow jobs pass synchronously, publishing immutable container packages (`sevzero-backend` and `sevzero-frontend`) to GitHub Container Registry:
 
 ![GitHub Actions Checks and GHCR Packages](screenshots/22-ghcr-packages-and-checks.png)
 
@@ -350,19 +350,19 @@ SevZero provisions AWS cloud infrastructure using modular Terraform:
 
 ## Module 8: Kubernetes Orchestration & Helm Packaging
 
-The application is packaged as a reusable Helm 3 chart in `helm/opspulse/`:
-- **Namespace**: Dedicated `opspulse` namespace (`k8s/namespace.yaml`).
+The application is packaged as a reusable Helm 3 chart in `helm/sevzero/`:
+- **Namespace**: Dedicated `sevzero` namespace (`k8s/namespace.yaml`).
 - **Deployments**:
-  - `opspulse-backend`: 2 replicas, configured with non-root security context, liveness (`/health`) and readiness (`/ready`) probes, and resource requests/limits.
-  - `opspulse-frontend`: 2 replicas, configured with non-root security context and health probes.
-  - `opspulse-postgres`: Single-instance database Deployment with persistent volume claim (1Gi `ReadWriteOnce`).
+  - `sevzero-backend`: 2 replicas, configured with non-root security context, liveness (`/health`) and readiness (`/ready`) probes, and resource requests/limits.
+  - `sevzero-frontend`: 2 replicas, configured with non-root security context and health probes.
+  - `sevzero-postgres`: Single-instance database Deployment with persistent volume claim (1Gi `ReadWriteOnce`).
 - **Services**: Stable ClusterIP services for frontend (`80`), backend (`8000`), and database (`5432`).
 - **Ingress**: Ingress resource routing `/` to frontend and `/api` to backend.
 - **Autoscaling**: HorizontalPodAutoscaler scaling backend pods between 2 and 6 replicas at 75% CPU utilization.
 
 ### 1. Helm Chart Linting (0 Errors)
 ```bash
-helm lint ./helm/opspulse
+helm lint ./helm/sevzero
 ```
 ![Helm Lint Verification](screenshots/08-helm-lint.png)
 
@@ -374,38 +374,38 @@ kubectl apply -f k8s/namespace.yaml
 
 ### 3. Helm Deployment
 ```bash
-helm upgrade --install opspulse ./helm/opspulse -n opspulse --create-namespace
+helm upgrade --install sevzero ./helm/sevzero -n sevzero --create-namespace
 ```
 ![Helm Install Output](screenshots/10-helm-install.png)
 
 ### 4. Running Pods Verification (All Pods in Running State)
 ```bash
-kubectl get pods -n opspulse
+kubectl get pods -n sevzero
 ```
 ![Kubectl Get Pods Running](screenshots/11-kubectl-get-pods.png)
 
 ### 5. Services Verification
 ```bash
-kubectl get svc -n opspulse
+kubectl get svc -n sevzero
 ```
 ![Kubectl Get Services](screenshots/12-kubectl-get-svc.png)
 
 ### 6. Active Helm Release
 ```bash
-helm list -n opspulse
+helm list -n sevzero
 ```
 ![Helm List Releases](screenshots/13-helm-list.png)
 
 ### 7. Ingress & HPA Status
 ```bash
-kubectl get ingress,hpa -n opspulse
+kubectl get ingress,hpa -n sevzero
 ```
 ![Ingress and HPA Status](screenshots/14-ingress-and-hpa.png)
 
 ### 8. Ingress Route Verification
-Routing directly through Ingress host `opspulse.local` to the backend:
+Routing directly through Ingress host `sevzero.local` to the backend:
 ```bash
-docker exec minikube curl -s -H 'Host: opspulse.local' http://192.168.49.2/health
+docker exec minikube curl -s -H 'Host: sevzero.local' http://192.168.49.2/health
 # Response: {"status":"UP"}
 ```
 ![Ingress Curl Verification](screenshots/15-ingress-curl-verify.png)
@@ -424,7 +424,7 @@ curl -s http://localhost:8000/metrics | grep -E '^(http_requests|process_cpu)' |
 
 ### 2. Monitoring Configuration & Prometheus Targets
 - `monitoring/prometheus-values.yaml`: Configures `kube-prometheus-stack` with Grafana enabled, automatic namespace discovery, and 15s scrape intervals.
-- `helm/opspulse/templates/servicemonitor.yaml`: Registers the `/metrics` endpoint with Prometheus Operator.
+- `helm/sevzero/templates/servicemonitor.yaml`: Registers the `/metrics` endpoint with Prometheus Operator.
 
 The Prometheus Operator automatically discovers the FastAPI endpoints via the ServiceMonitor, maintaining continuous scrape health:
 
@@ -452,7 +452,7 @@ To demonstrate real-world cluster diagnostics, two failure scenarios were constr
 ### Failure Scenario 1: Broken Image (`ImagePullBackOff`)
 - **Manifest:** `troubleshooting/broken-image.yaml`
 - **Symptom:** Pod fails with `ErrImagePull` / `ImagePullBackOff`.
-- **Diagnostic Command:** `kubectl describe pod -n opspulse -l app=opspulse-broken-image`
+- **Diagnostic Command:** `kubectl describe pod -n sevzero -l app=sevzero-broken-image`
 - **Finding:** The deployment references `v999-broken-tag-does-not-exist`.
 - **Fix:** Update image tag to a verified digest and trigger rollout.
 
@@ -461,9 +461,9 @@ To demonstrate real-world cluster diagnostics, two failure scenarios were constr
 ### Failure Scenario 2: Broken Service (`Empty Endpoints`)
 - **Manifest:** `troubleshooting/broken-service.yaml`
 - **Symptom:** Service created but cannot route traffic.
-- **Diagnostic Command:** `kubectl get endpoints opspulse-broken-service -n opspulse`
+- **Diagnostic Command:** `kubectl get endpoints sevzero-broken-service -n sevzero`
 - **Finding:** Endpoints list is `<none>` because the service selector (`app: wrong-nonexistent-selector-label`) does not match the pod labels.
-- **Fix:** Realign selector to `app: opspulse-backend`.
+- **Fix:** Realign selector to `app: sevzero-backend`.
 
 ![Troubleshoot Broken Service](screenshots/18-troubleshoot-broken-service.png)
 
@@ -505,10 +505,10 @@ minikube image load devopscapstoneproject-backend:latest
 minikube image load devopscapstoneproject-frontend:latest
 
 # Deploy with Helm
-helm upgrade --install opspulse ./helm/opspulse -n opspulse --create-namespace
+helm upgrade --install sevzero ./helm/sevzero -n sevzero --create-namespace
 
 # Check workloads
-kubectl get pods,svc,ingress,hpa -n opspulse
+kubectl get pods,svc,ingress,hpa -n sevzero
 ```
 
 ---

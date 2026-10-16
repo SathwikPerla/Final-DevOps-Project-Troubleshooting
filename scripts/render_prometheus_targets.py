@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Renders an authentic, high-resolution Prometheus Targets web UI screenshot
-for OpsPulse using headless Google Chrome.
+for SevZero using headless Google Chrome.
 """
 import os
 import subprocess
@@ -319,12 +319,12 @@ HTML_CONTENT = """<!DOCTYPE html>
       </div>
     </div>
 
-    <!-- Group 1: opspulse-backend -->
+    <!-- Group 1: sevzero-backend -->
     <div class="target-group">
       <div class="group-header">
         <div class="group-title-wrap">
           <span class="chevron-icon">▼</span>
-          <span class="group-title">serviceMonitor/opspulse/opspulse-backend/0</span>
+          <span class="group-title">serviceMonitor/sevzero/sevzero-backend/0</span>
           <span class="group-badge">2/2 UP</span>
         </div>
         <div class="group-actions">
@@ -356,13 +356,13 @@ HTML_CONTENT = """<!DOCTYPE html>
             </td>
             <td>
               <div class="labels-container">
-                <span class="label-pill"><span class="label-key">app</span>="<span class="label-val">opspulse-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">app</span>="<span class="label-val">sevzero-backend</span>"</span>
                 <span class="label-pill"><span class="label-key">endpoint</span>="<span class="label-val">http-metrics</span>"</span>
                 <span class="label-pill"><span class="label-key">instance</span>="<span class="label-val">10.244.0.14:8000</span>"</span>
-                <span class="label-pill"><span class="label-key">job</span>="<span class="label-val">opspulse-backend</span>"</span>
-                <span class="label-pill"><span class="label-key">namespace</span>="<span class="label-val">opspulse</span>"</span>
-                <span class="label-pill"><span class="label-key">pod</span>="<span class="label-val">opspulse-backend-67df98f6d5-a8z1b</span>"</span>
-                <span class="label-pill"><span class="label-key">service</span>="<span class="label-val">opspulse-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">job</span>="<span class="label-val">sevzero-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">namespace</span>="<span class="label-val">sevzero</span>"</span>
+                <span class="label-pill"><span class="label-key">pod</span>="<span class="label-val">sevzero-backend-67df98f6d5-a8z1b</span>"</span>
+                <span class="label-pill"><span class="label-key">service</span>="<span class="label-val">sevzero-backend</span>"</span>
               </div>
             </td>
             <td><span class="time-val">1.284s ago</span></td>
@@ -380,13 +380,13 @@ HTML_CONTENT = """<!DOCTYPE html>
             </td>
             <td>
               <div class="labels-container">
-                <span class="label-pill"><span class="label-key">app</span>="<span class="label-val">opspulse-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">app</span>="<span class="label-val">sevzero-backend</span>"</span>
                 <span class="label-pill"><span class="label-key">endpoint</span>="<span class="label-val">http-metrics</span>"</span>
                 <span class="label-pill"><span class="label-key">instance</span>="<span class="label-val">10.244.0.15:8000</span>"</span>
-                <span class="label-pill"><span class="label-key">job</span>="<span class="label-val">opspulse-backend</span>"</span>
-                <span class="label-pill"><span class="label-key">namespace</span>="<span class="label-val">opspulse</span>"</span>
-                <span class="label-pill"><span class="label-key">pod</span>="<span class="label-val">opspulse-backend-67df98f6d5-v4k9c</span>"</span>
-                <span class="label-pill"><span class="label-key">service</span>="<span class="label-val">opspulse-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">job</span>="<span class="label-val">sevzero-backend</span>"</span>
+                <span class="label-pill"><span class="label-key">namespace</span>="<span class="label-val">sevzero</span>"</span>
+                <span class="label-pill"><span class="label-key">pod</span>="<span class="label-val">sevzero-backend-67df98f6d5-v4k9c</span>"</span>
+                <span class="label-pill"><span class="label-key">service</span>="<span class="label-val">sevzero-backend</span>"</span>
               </div>
             </td>
             <td><span class="time-val">2.812s ago</span></td>

@@ -1,7 +1,7 @@
 global:
   environment: production
 
-namespace: opspulse
+namespace: sevzero
 
 backend:
   replicaCount: 2
@@ -20,8 +20,8 @@ backend:
       cpu: 100m
       memory: 128Mi
   env:
-    DATABASE_URL: "postgresql+psycopg://opspulse:opspulse@opspulse-postgres:5432/opspulse"
-    APP_NAME: "OpsPulse Incident Management API"
+    DATABASE_URL: "postgresql+psycopg://sevzero:sevzero@sevzero-postgres:5432/sevzero"
+    APP_NAME: "SevZero Incident Management API"
 
 frontend:
   replicaCount: 2
@@ -44,14 +44,14 @@ postgres:
   enabled: true
   image: postgres:16-alpine
   storage: 1Gi
-  database: opspulse
-  username: opspulse
-  password: opspulse
+  database: sevzero
+  username: sevzero
+  password: sevzero
 
 ingress:
   enabled: true
   className: nginx
-  host: opspulse.local
+  host: sevzero.local
 
 hpa:
   enabled: true

@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: opspulse-broken-service
-  namespace: opspulse
+  name: sevzero-broken-service
+  namespace: sevzero
 spec:
   ports:
     - port: 80

@@ -1,6 +1,6 @@
-# OpsPulse — DevOps & SRE Capstone Interview Preparation Guide
+# SevZero — DevOps & SRE Capstone Interview Preparation Guide
 
-> **Project:** OpsPulse — Enterprise DevOps Incident & Service Reliability Management Platform  
+> **Project:** SevZero — Enterprise DevOps Incident & Service Reliability Management Platform  
 > **Course:** DevOps Engineering Capstone (100/100 Rubric Verified)  
 > **Core Tech:** FastAPI, React (Vite), PostgreSQL, Alembic, Docker, Kubernetes (Minikube / EKS), Helm 3, Terraform, Prometheus, Grafana, GitHub Actions, Trivy
 
@@ -8,7 +8,7 @@
 
 ## 1. 30-Second Elevator Pitch
 
-> *"Most student projects are basic CRUD applications on localhost. For my capstone, I built **OpsPulse**—a production-grade, cloud-native DevOps incident and reliability management platform designed around the complete SRE lifecycle.*  
+> *"Most student projects are basic CRUD applications on localhost. For my capstone, I built **SevZero**—a production-grade, cloud-native DevOps incident and reliability management platform designed around the complete SRE lifecycle.*  
 >  
 > *It features an asynchronous FastAPI backend instrumented with Prometheus metrics and an Alembic-managed PostgreSQL database. I built a multi-stage, non-root Docker container architecture, secured it with automated Trivy DevSecOps vulnerability gating in a GitHub Actions CI/CD pipeline, and provisioned a multi-AZ AWS EKS cluster using modular Terraform IaC. Finally, I packaged the entire microservice stack into a Helm 3 chart with Ingress routing, Horizontal Pod Autoscaling (HPA), and real-time Grafana dashboard observability."*
 
@@ -110,7 +110,7 @@
 ### Q5: *"Tell me about a real troubleshooting scenario you encountered and how you triaged it."*
 > **Verbatim Answer:**  
 > *"During capstone validation, we tested a failure recovery lab: simulating an image pull backoff by pushing an invalid container tag.*  
-> *I used `kubectl describe pod` to inspect the event stream and diagnosed `ImagePullBackOff (ErrImagePull)`. Because our Helm release had rolling update safeguards, Kubernetes kept the healthy old replicas alive while halting the rollout of the failed revision. I executed `helm rollback opspulse <revision>` to instantly revert the deployment without dropping a single user request."*
+> *I used `kubectl describe pod` to inspect the event stream and diagnosed `ImagePullBackOff (ErrImagePull)`. Because our Helm release had rolling update safeguards, Kubernetes kept the healthy old replicas alive while halting the rollout of the failed revision. I executed `helm rollback sevzero <revision>` to instantly revert the deployment without dropping a single user request."*
 
 ---
 

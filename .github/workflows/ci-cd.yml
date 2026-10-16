@@ -1,4 +1,4 @@
-name: OpsPulse CI/CD & DevSecOps Pipeline
+name: SevZero CI/CD & DevSecOps Pipeline
 
 on:
   push:
@@ -70,11 +70,11 @@ jobs:
 
       - name: Build backend Docker image
         run: |
-          docker build -t ghcr.io/${{ env.OWNER_LC }}/opspulse-backend:${{ github.sha }} ./backend
+          docker build -t ghcr.io/${{ env.OWNER_LC }}/sevzero-backend:${{ github.sha }} ./backend
 
       - name: Build frontend Docker image
         run: |
-          docker build -t ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend:${{ github.sha }} ./frontend
+          docker build -t ghcr.io/${{ env.OWNER_LC }}/sevzero-frontend:${{ github.sha }} ./frontend
 
       - name: Trivy vulnerability scan (Backend Image)
         run: |
@@ -83,7 +83,7 @@ jobs:
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
             --exit-code 0 \
-            ghcr.io/${{ env.OWNER_LC }}/opspulse-backend:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/sevzero-backend:${{ github.sha }}
 
       - name: Trivy vulnerability scan (Frontend Image)
         run: |
@@ -92,12 +92,12 @@ jobs:
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
             --exit-code 0 \
-            ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend:${{ github.sha }}
+            ghcr.io/${{ env.OWNER_LC }}/sevzero-frontend:${{ github.sha }}
 
       - name: Push images to GitHub Container Registry
         run: |
-          docker push ghcr.io/${{ env.OWNER_LC }}/opspulse-backend:${{ github.sha }}
-          docker push ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend:${{ github.sha }}
+          docker push ghcr.io/${{ env.OWNER_LC }}/sevzero-backend:${{ github.sha }}
+          docker push ghcr.io/${{ env.OWNER_LC }}/sevzero-frontend:${{ github.sha }}
 
   deploy:
     name: Deploy to Kubernetes Cluster via Helm
@@ -118,7 +118,7 @@ jobs:
       - name: Set up Helm 3
         uses: azure/setup-helm@v4
 
-      - name: Deploy OpsPulse Helm Release (Cluster or Dry-Run Validation)
+      - name: Deploy SevZero Helm Release (Cluster or Dry-Run Validation)
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         run: |
@@ -126,20 +126,20 @@ jobs:
             echo "KUBE_CONFIG_DATA detected. Deploying to live Kubernetes cluster..."
             mkdir -p ~/.kube
             echo "$KUBE_CONFIG_DATA" | base64 -d > ~/.kube/config
-            helm upgrade --install opspulse ./helm/opspulse \
-              --namespace opspulse \
+            helm upgrade --install sevzero ./helm/sevzero \
+              --namespace sevzero \
               --create-namespace \
-              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
+              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/sevzero-backend \
               --set backend.image.tag=${{ github.sha }} \
-              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend \
+              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/sevzero-frontend \
               --set frontend.image.tag=${{ github.sha }}
           else
             echo "No live cluster secret detected. Validating Helm chart syntax and synthesis..."
-            helm lint ./helm/opspulse
-            helm template opspulse ./helm/opspulse \
-              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-backend \
+            helm lint ./helm/sevzero
+            helm template sevzero ./helm/sevzero \
+              --set backend.image.repository=ghcr.io/${{ env.OWNER_LC }}/sevzero-backend \
               --set backend.image.tag=${{ github.sha }} \
-              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/opspulse-frontend \
+              --set frontend.image.repository=ghcr.io/${{ env.OWNER_LC }}/sevzero-frontend \
               --set frontend.image.tag=${{ github.sha }}
             echo "Helm templates validated successfully!"
           fi

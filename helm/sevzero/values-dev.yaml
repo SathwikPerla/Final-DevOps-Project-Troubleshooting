@@ -4,4 +4,4 @@ frontend:
   replicaCount: 2
 ingress:
   enabled: true
-  host: opspulse.local
+  host: sevzero.local

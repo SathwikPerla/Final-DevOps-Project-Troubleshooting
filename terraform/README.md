@@ -1,6 +1,6 @@
-# OpsPulse AWS Infrastructure as Code (Terraform)
+# SevZero AWS Infrastructure as Code (Terraform)
 
-This directory defines the automated cloud infrastructure provisioning for the OpsPulse Incident & Reliability Management platform on Amazon Web Services (AWS).
+This directory defines the automated cloud infrastructure provisioning for the SevZero Incident & Reliability Management platform on Amazon Web Services (AWS).
 
 ---
 
@@ -42,7 +42,7 @@ terraform apply tfplan
 ### 5. Configure Local Kubectl
 After cluster creation, link local `kubectl` to the new EKS cluster:
 ```bash
-aws eks --region ap-south-1 update-kubeconfig --name opspulse-cluster
+aws eks --region ap-south-1 update-kubeconfig --name sevzero-cluster
 ```
 
 ### 6. Clean Teardown (Avoid Runaway AWS Costs)

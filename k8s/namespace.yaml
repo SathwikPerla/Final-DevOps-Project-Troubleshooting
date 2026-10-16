@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: opspulse
+  name: sevzero
   labels:
-    name: opspulse
-    app.kubernetes.io/name: opspulse
-    app.kubernetes.io/part-of: opspulse-platform
+    name: sevzero
+    app.kubernetes.io/name: sevzero
+    app.kubernetes.io/part-of: sevzero-platform

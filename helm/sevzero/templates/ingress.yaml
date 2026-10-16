@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: opspulse-ingress
+  name: sevzero-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -15,14 +15,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: opspulse-frontend
+                name: sevzero-frontend
                 port:
                   number: 80
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: opspulse-backend
+                name: sevzero-backend
                 port:
                   number: {{ .Values.backend.service.port }}
 {{- end }}

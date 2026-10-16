@@ -2,14 +2,14 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: opspulse-backend-monitor
+  name: sevzero-backend-monitor
   labels:
     release: prometheus
-    app: opspulse-backend
+    app: sevzero-backend
 spec:
   selector:
     matchLabels:
-      app: opspulse-backend
+      app: sevzero-backend
   endpoints:
     - port: http
       path: {{ .Values.serviceMonitor.path }}

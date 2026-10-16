@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: opspulse-postgres-pvc
+  name: sevzero-postgres-pvc
   labels:
-    app: opspulse-postgres
+    app: sevzero-postgres
 spec:
   accessModes:
     - ReadWriteOnce
@@ -15,20 +15,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: opspulse-postgres
+  name: sevzero-postgres
   labels:
-    app: opspulse-postgres
+    app: sevzero-postgres
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: opspulse-postgres
+      app: sevzero-postgres
   template:
     metadata:
       labels:
-        app: opspulse-postgres
+        app: sevzero-postgres
     spec:
       containers:
         - name: postgres
@@ -49,14 +49,14 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: opspulse-postgres-pvc
+            claimName: sevzero-postgres-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: opspulse-postgres
+  name: sevzero-postgres
   labels:
-    app: opspulse-postgres
+    app: sevzero-postgres
 spec:
   type: ClusterIP
   ports:
@@ -65,5 +65,5 @@ spec:
       protocol: TCP
       name: postgres
   selector:
-    app: opspulse-postgres
+    app: sevzero-postgres
 {{- end }}

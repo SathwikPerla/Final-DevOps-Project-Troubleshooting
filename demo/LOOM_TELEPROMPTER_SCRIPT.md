@@ -11,7 +11,7 @@
 
 1. **Tab 1:** Slide 1 of the Presentation (`demo/index.html` or `demo/SevZero_DevOps_Capstone_Presentation.pptx`)
 2. **Tab 2:** Live SevZero Web UI (`http://localhost:3000`)
-3. **Tab 3:** Terminal Window (Split or ready with `pytest -v` and `kubectl get all -n opspulse`)
+3. **Tab 3:** Terminal Window (Split or ready with `pytest -v` and `kubectl get all -n sevzero`)
 4. **Tab 4:** GitHub Actions Pipeline (`https://github.com/SathwikPerla/Final-DevOps-Project-Troubleshooting/actions`)
 
 ---
@@ -40,9 +40,9 @@
 ---
 
 ### [0:55 - 1:15] AWS Terraform IaC & Kubernetes Orchestration
-- **What to show on screen:** Switch to **Tab 3** (Terminal) and run `kubectl get pods,svc,ingress,hpa -n opspulse`.
+- **What to show on screen:** Switch to **Tab 3** (Terminal) and run `kubectl get pods,svc,ingress,hpa -n sevzero`.
 - **What to speak:**
-> *"For cloud infrastructure, I authored modular Terraform to provision a multi-AZ AWS VPC and managed EKS cluster. The application is packaged into a declarative Helm 3 chart running in our dedicated `opspulse` namespace. Here in the cluster, we have high-availability backend and frontend pods with 2 replicas each, Ingress routing through `opspulse.local`, and Horizontal Pod Autoscaling based on CPU utilization."*
+> *"For cloud infrastructure, I authored modular Terraform to provision a multi-AZ AWS VPC and managed EKS cluster. The application is packaged into a declarative Helm 3 chart running in our dedicated `sevzero` namespace. Here in the cluster, we have high-availability backend and frontend pods with 2 replicas each, Ingress routing through `sevzero.local`, and Horizontal Pod Autoscaling based on CPU utilization."*
 
 ---
 

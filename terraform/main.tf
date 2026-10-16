@@ -6,7 +6,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "opspulse-vpc"
+  name = "sevzero-vpc"
   cidr = var.vpc_cidr
 
   azs             = ["${var.region}a", "${var.region}b"]
@@ -30,7 +30,7 @@ module "vpc" {
 
   tags = {
     Environment = "production"
-    Project     = "OpsPulse"
+    Project     = "SevZero"
     ManagedBy   = "Terraform"
   }
 }
@@ -57,14 +57,14 @@ module "eks" {
 
       labels = {
         role = "worker"
-        app  = "opspulse"
+        app  = "sevzero"
       }
     }
   }
 
   tags = {
     Environment = "production"
-    Project     = "OpsPulse"
+    Project     = "SevZero"
     ManagedBy   = "Terraform"
   }
 }

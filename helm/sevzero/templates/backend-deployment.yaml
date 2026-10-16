@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: opspulse-backend
+  name: sevzero-backend
   labels:
-    app: opspulse-backend
-    app.kubernetes.io/name: opspulse-backend
+    app: sevzero-backend
+    app.kubernetes.io/name: sevzero-backend
     app.kubernetes.io/component: backend
 spec:
   replicas: {{ .Values.backend.replicaCount }}
   selector:
     matchLabels:
-      app: opspulse-backend
+      app: sevzero-backend
   template:
     metadata:
       labels:
-        app: opspulse-backend
+        app: sevzero-backend
     spec:
       securityContext:
         runAsNonRoot: true

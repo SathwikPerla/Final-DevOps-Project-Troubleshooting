@@ -9,4 +9,4 @@ hpa:
   targetCPUUtilizationPercentage: 70
 ingress:
   enabled: true
-  host: opspulse.prod.company.internal
+  host: sevzero.prod.company.internal

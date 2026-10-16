@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 # Use a test SQLite database to strictly isolate tests from production DB
-TEST_DATABASE_URL = "sqlite:///./test_opspulse.db"
+TEST_DATABASE_URL = "sqlite:///./test_sevzero.db"
 os.environ["DATABASE_URL"] = TEST_DATABASE_URL
 
 from app.db import Base, get_db
@@ -19,9 +19,9 @@ def setup_test_db():
     Base.metadata.create_all(bind=test_engine)
     yield
     Base.metadata.drop_all(bind=test_engine)
-    if os.path.exists("./test_opspulse.db"):
+    if os.path.exists("./test_sevzero.db"):
         try:
-            os.remove("./test_opspulse.db")
+            os.remove("./test_sevzero.db")
         except OSError:
             pass
 

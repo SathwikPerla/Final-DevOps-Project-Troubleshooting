@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: opspulse-broken-image
-  namespace: opspulse
+  name: sevzero-broken-image
+  namespace: sevzero
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: opspulse-broken-image
+      app: sevzero-broken-image
   template:
     metadata:
       labels:
-        app: opspulse-broken-image
+        app: sevzero-broken-image
     spec:
       containers:
         - name: app

@@ -400,7 +400,7 @@
           </div>
           <ul class="bullet-list">
             <li>Initializes Helm 3 and configures kubectl.</li>
-            <li>Executes atomic helm upgrade --install opspulse ./helm/opspulse.</li>
+            <li>Executes atomic helm upgrade --install sevzero ./helm/sevzero.</li>
             <li>Updates image tags dynamically with commit SHA.</li>
             <li>Zero-downtime rolling update across Kubernetes pods.</li>
           </ul>
@@ -448,10 +448,10 @@
         <div class="card">
           <div class="card-header">
             <span class="card-title">Declarative Helm 3 Architecture</span>
-            <span class="card-badge">helm/opspulse</span>
+            <span class="card-badge">helm/sevzero</span>
           </div>
           <ul class="bullet-list">
-            <li><strong>Namespace Isolation:</strong> Dedicated opspulse namespace via k8s/namespace.yaml.</li>
+            <li><strong>Namespace Isolation:</strong> Dedicated sevzero namespace via k8s/namespace.yaml.</li>
             <li><strong>High Availability:</strong> Backend and Frontend Deployments running with 2+ replicas each.</li>
             <li><strong>Stateful Storage:</strong> PostgreSQL database backed by 1Gi PersistentVolumeClaim (RWO).</li>
             <li><strong>Cluster Networking:</strong> ClusterIP services exposing Frontend (80), Backend (8000), and DB (5432).</li>
@@ -464,11 +464,11 @@
             <span class="card-badge badge-green">Ingress + HPA</span>
           </div>
           <ul class="bullet-list">
-            <li><strong>Host Routing:</strong> Ingress rule routing opspulse.local directly to microservices.</li>
+            <li><strong>Host Routing:</strong> Ingress rule routing sevzero.local directly to microservices.</li>
             <li><strong>Path Dissection:</strong> Routes / to React frontend and /api to FastAPI backend.</li>
             <li><strong>Horizontal Pod Autoscaler:</strong> HPA monitors CPU utilization with target threshold of 75%.</li>
             <li><strong>Dynamic Pod Scaling:</strong> Automatically scales backend workload between 2 and 6 replicas.</li>
-            <li><strong>Workload Verification:</strong> All pods verified in Running state via kubectl get pods -n opspulse.</li>
+            <li><strong>Workload Verification:</strong> All pods verified in Running state via kubectl get pods -n sevzero.</li>
           </ul>
         </div>
       </div>
@@ -519,7 +519,7 @@
           <ul class="bullet-list">
             <li><strong>Reproduction:</strong> Manifest troubleshooting/broken-image.yaml references nonexistent tag v999.</li>
             <li><strong>Cluster Symptom:</strong> Pod fails to start, entering ErrImagePull and ImagePullBackOff loops.</li>
-            <li><strong>Diagnostic Action:</strong> Inspected events via kubectl describe pod -n opspulse.</li>
+            <li><strong>Diagnostic Action:</strong> Inspected events via kubectl describe pod -n sevzero.</li>
             <li><strong>Resolution:</strong> Replaced invalid tag with verified GHCR commit digest and triggered clean rollout.</li>
           </ul>
         </div>
@@ -531,8 +531,8 @@
           <ul class="bullet-list">
             <li><strong>Reproduction:</strong> Service manifest specifies non-matching selector label.</li>
             <li><strong>Cluster Symptom:</strong> Service exists on cluster IP, but all HTTP requests fail with connection refused.</li>
-            <li><strong>Diagnostic Action:</strong> Ran kubectl get endpoints opspulse-broken-service -n opspulse (returned &lt;none&gt;).</li>
-            <li><strong>Resolution:</strong> Realigned selector to app: opspulse-backend; endpoints populated immediately.</li>
+            <li><strong>Diagnostic Action:</strong> Ran kubectl get endpoints sevzero-broken-service -n sevzero (returned &lt;none&gt;).</li>
+            <li><strong>Resolution:</strong> Realigned selector to app: sevzero-backend; endpoints populated immediately.</li>
           </ul>
         </div>
       </div>

@@ -14,7 +14,7 @@ def test_root_endpoint(client):
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
-    assert "OpsPulse" in data["service"]
+    assert "SevZero" in data["service"]
     assert data["status"] == "OPERATIONAL"
     assert data["docs"] == "/docs"
 

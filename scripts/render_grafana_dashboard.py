@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Renders an authentic, high-resolution Grafana 11 SRE Dashboard for OpsPulse
+Renders an authentic, high-resolution Grafana 11 SRE Dashboard for SevZero
 using headless Google Chrome.
 """
 import os
@@ -13,7 +13,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Grafana - OpsPulse Telemetry & Incident Management</title>
+  <title>Grafana - SevZero Telemetry & Incident Management</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -478,7 +478,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         <span class="parent">Dashboards</span>
         <span class="slash">/</span>
         <span class="current">
-          OpsPulse Telemetry & SRE Golden Signals
+          SevZero Telemetry & SRE Golden Signals
           <span class="star-icon">★</span>
         </span>
       </div>
@@ -509,11 +509,11 @@ HTML_CONTENT = """<!DOCTYPE html>
     <div class="dash-meta">
       <div class="meta-item">
         <span>Target:</span>
-        <span class="meta-val">http://opspulse-backend:8000/metrics</span>
+        <span class="meta-val">http://sevzero-backend:8000/metrics</span>
       </div>
       <div class="meta-item">
         <span>Namespace:</span>
-        <span class="meta-val">opspulse</span>
+        <span class="meta-val">sevzero</span>
       </div>
       <div class="meta-item">
         <span>Scrape Interval:</span>

@@ -1,17 +1,17 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: opspulse-postgres
+    container_name: sevzero-postgres
     environment:
-      POSTGRES_DB: opspulse
-      POSTGRES_USER: opspulse
-      POSTGRES_PASSWORD: opspulse
+      POSTGRES_DB: sevzero
+      POSTGRES_USER: sevzero
+      POSTGRES_PASSWORD: sevzero
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - sevzero-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U opspulse -d opspulse"]
+      test: ["CMD-SHELL", "pg_isready -U sevzero -d sevzero"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -19,9 +19,9 @@ services:
 
   backend:
     build: ./backend
-    container_name: opspulse-backend
+    container_name: sevzero-backend
     environment:
-      DATABASE_URL: postgresql+psycopg://opspulse:opspulse@postgres:5432/opspulse
+      DATABASE_URL: postgresql+psycopg://sevzero:sevzero@postgres:5432/sevzero
       APP_NAME: "SevZero SRE Incident API"
     depends_on:
       postgres:
@@ -32,7 +32,7 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: opspulse-frontend
+    container_name: sevzero-frontend
     depends_on:
       - backend
     ports:
@@ -40,4 +40,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres-data:
+  sevzero-data:

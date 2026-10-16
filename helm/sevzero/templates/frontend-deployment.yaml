@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: opspulse-frontend
+  name: sevzero-frontend
   labels:
-    app: opspulse-frontend
-    app.kubernetes.io/name: opspulse-frontend
+    app: sevzero-frontend
+    app.kubernetes.io/name: sevzero-frontend
     app.kubernetes.io/component: frontend
 spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
     matchLabels:
-      app: opspulse-frontend
+      app: sevzero-frontend
   template:
     metadata:
       labels:
-        app: opspulse-frontend
+        app: sevzero-frontend
     spec:
       securityContext:
         runAsNonRoot: true
