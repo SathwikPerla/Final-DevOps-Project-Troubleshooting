@@ -1,16 +1,16 @@
-# OpsPulse — 90-Second Loom Video Demonstration Script
+# SevZero — 90-Second Loom Video Demonstration Script
 
 > **Total Time:** 1 Minute 30 Seconds (90 Seconds)  
 > **Target Speaking Pace:** ~140 words per minute (Calm, confident, natural)  
 > **Presenter:** Sathwik Perla (Roll: 590)  
-> **Project:** OpsPulse — Enterprise Cloud-Native SRE Incident & Reliability Platform  
+> **Project:** SevZero — Enterprise Cloud-Native SRE Incident & Reliability Platform  
 
 ---
 
 ## 🎬 Pre-Flight Checklist: Open These 4 Browser Tabs Before Recording
 
-1. **Tab 1:** Slide 1 of the Presentation (`demo/index.html` or `demo/OpsPulse_DevOps_Capstone_Presentation.pptx`)
-2. **Tab 2:** Live OpsPulse Web UI (`http://localhost:3000`)
+1. **Tab 1:** Slide 1 of the Presentation (`demo/index.html` or `demo/SevZero_DevOps_Capstone_Presentation.pptx`)
+2. **Tab 2:** Live SevZero Web UI (`http://localhost:3000`)
 3. **Tab 3:** Terminal Window (Split or ready with `pytest -v` and `kubectl get all -n opspulse`)
 4. **Tab 4:** GitHub Actions Pipeline (`https://github.com/SathwikPerla/Final-DevOps-Project-Troubleshooting/actions`)
 
@@ -21,7 +21,7 @@
 ### [0:00 - 0:15] Hook & Project Introduction
 - **What to show on screen:** **Tab 1** (Slide 1 of presentation or Title Slide).
 - **What to speak:**
-> *"Hello everyone! My name is Sathwik Perla. For my DevOps Capstone project, I built **OpsPulse**—a production-grade, cloud-native SRE Incident and Reliability platform. Rather than building a generic task list, OpsPulse is an enterprise incident management system modeled around the complete DevOps and Site Reliability Engineering lifecycle."*
+> *"Hello everyone! My name is Sathwik Perla. For my DevOps Capstone project, I built **SevZero**—a production-grade, cloud-native SRE Incident and Reliability platform. Rather than building a generic task list, SevZero is an enterprise incident management system modeled around the complete DevOps and Site Reliability Engineering lifecycle."*
 
 ---
 

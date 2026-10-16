@@ -1,1 +1,1 @@
-"""OpsPulse Backend Application Package."""
+"""SevZero Backend Application Package."""

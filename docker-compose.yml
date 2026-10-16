@@ -22,7 +22,7 @@ services:
     container_name: opspulse-backend
     environment:
       DATABASE_URL: postgresql+psycopg://opspulse:opspulse@postgres:5432/opspulse
-      APP_NAME: "OpsPulse Incident Management API"
+      APP_NAME: "SevZero SRE Incident API"
     depends_on:
       postgres:
         condition: service_healthy

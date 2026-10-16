@@ -270,7 +270,7 @@ export default function App() {
         <div className="brand">
           <div className="brand-logo">OP</div>
           <div>
-            <div className="brand-name">OpsPulse</div>
+            <div className="brand-name">SevZero</div>
             <div className="brand-badge">SRE INCIDENTS v1.0</div>
           </div>
         </div>

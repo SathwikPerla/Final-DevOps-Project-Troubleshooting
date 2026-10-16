@@ -1,4 +1,4 @@
-# Session 21 — DevOps Final Capstone Project: OpsPulse
+# Session 21 — DevOps Final Capstone Project: SevZero
 
 **Enterprise DevOps Incident & Service Reliability Management Platform**
 
@@ -15,7 +15,7 @@
 > **Video Demonstration Link:**  
 > [Watch Full Project Walkthrough on Google Drive](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
 
-[![OpsPulse Project Video Walkthrough](screenshots/03-browser-app-running.png)](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
+[![SevZero Project Video Walkthrough](screenshots/03-browser-app-running.png)](PASTE_YOUR_GOOGLE_DRIVE_VIDEO_LINK_HERE)
 
 *Click on the preview thumbnail above or the text link to stream the full video demonstration (Application UI, Pytest Suite, Docker Compose, Kubernetes Pods/Services/Ingress/HPA, and GitHub Actions CI/CD).*
 
@@ -24,7 +24,7 @@
 
 ## Executive Summary
 
-**OpsPulse** is a production-grade, cloud-native DevOps Incident and Service Reliability Management platform. Built to solve real-world infrastructure alerting, on-call workflow coordination, and service reliability engineering (SRE) challenges, OpsPulse replaces generic CRUD task tracking with an end-to-end incident mitigation system.
+**SevZero** is a production-grade, cloud-native DevOps Incident and Service Reliability Management platform. Built to solve real-world infrastructure alerting, on-call workflow coordination, and service reliability engineering (SRE) challenges, SevZero replaces generic CRUD task tracking with an end-to-end incident mitigation system.
 
 The project demonstrates how a microservices-based web application journeys from local development to automated testing, containerization, container security scanning, infrastructure-as-code provisioning, Kubernetes orchestration, and continuous observability.
 
@@ -172,7 +172,7 @@ Devops Capstone Project/
 
 ## Module 1: Application (Frontend + Backend + Database)
 
-OpsPulse is powered by a FastAPI backend connected to PostgreSQL, with schema versioning managed through Alembic. The React frontend presents a real-time SRE incident management board.
+SevZero is powered by a FastAPI backend connected to PostgreSQL, with schema versioning managed through Alembic. The React frontend presents a real-time SRE incident management board.
 
 ### Implemented REST API Endpoints
 
@@ -193,7 +193,7 @@ OpsPulse is powered by a FastAPI backend connected to PostgreSQL, with schema ve
 
 The frontend renders a dark-mode incident control room featuring live status indicators, KPI summary cards, filter bars, and quick-resolve actions.
 
-![OpsPulse Web Application Interface](screenshots/03-browser-app-running.png)
+![SevZero Web Application Interface](screenshots/03-browser-app-running.png)
 
 ---
 
@@ -335,7 +335,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:lates
 
 ## Module 7: Infrastructure as Code (AWS VPC + EKS via Terraform)
 
-OpsPulse provisions AWS cloud infrastructure using modular Terraform:
+SevZero provisions AWS cloud infrastructure using modular Terraform:
 - **VPC Module**: Custom `10.20.0.0/16` network spanning 2 Availability Zones (`ap-south-1a`, `ap-south-1b`), with 2 public subnets (`10.20.101.0/24`, `10.20.102.0/24`) and 2 private subnets (`10.20.1.0/24`, `10.20.2.0/24`) with NAT Gateway.
 - **EKS Module**: Kubernetes 1.31 cluster with managed worker node groups (`t3.medium`, autoscaling from 2 to 4 nodes).
 - **Safety**: `terraform.tfvars.example` is committed; real secrets and `.tfstate` files are strictly excluded via `.gitignore`.
@@ -431,7 +431,7 @@ The Prometheus Operator automatically discovers the FastAPI endpoints via the Se
 ![Prometheus Targets Status](screenshots/23-prometheus-targets.png)
 
 ### 3. Grafana Live Telemetry & Golden Signals Dashboard
-A dedicated SRE telemetry dashboard monitoring OpsPulse's four golden signals (Latency, Traffic, Errors, and Saturation) alongside database incident metrics:
+A dedicated SRE telemetry dashboard monitoring SevZero's four golden signals (Latency, Traffic, Errors, and Saturation) alongside database incident metrics:
 
 ![Grafana SRE Dashboard](screenshots/20-grafana-dashboard.png)
 
